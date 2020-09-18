@@ -1,0 +1,218 @@
+%%%%%%%%%%%%%%%%%%%%%%
+%   Begin preamble   %
+%%%%%%%%%%%%%%%%%%%%%%
+
+% !TEX TS-program = pdflatex
+% !TEX encoding = UTF-8 Unicode
+
+% Handout versions
+% \documentclass[handout]{beamer}
+% \usepackage{pgfpages}
+% \pgfpagesuselayout{2 on 1}[a4paper, border shrink = 5mm]
+% \pgfpagesuselayout{4 on 1}[a4paper, border shrink = 5mm, landscape]
+
+% Slide version
+\documentclass[aspectratio = 169, 9pt]{beamer}
+
+% Margins
+\setbeamersize{text margin left = .3cm, text margin right = .3cm}
+\geometry{hmargin = 2.56cm, vmargin = 0cm}
+
+% Suppresses navigation symbols
+\setbeamertemplate{navigation symbols}{}
+
+% Colors
+\definecolor{main-color}{RGB}{0,51,102} % dark blue
+
+\definecolor{gray}{gray}{0.50}
+\definecolor{dark-gray}{gray}{0.40}
+\definecolor{light-gray}{gray}{0.95}
+
+\definecolor{blue}{RGB}{0,114,178}
+\definecolor{dark-blue}{RGB}{0,51,102} % dark blue
+\definecolor{light-blue}{RGB}{86,180,233}
+
+\definecolor{red}{RGB}{213,94,0}
+\definecolor{dark-red}{RGB}{139,0,0}
+
+\definecolor{green}{RGB}{0,158,115}
+\definecolor{dark-green}{RGB}{0,100,80}
+
+\definecolor{purple}{RGB}{204,121,167}
+\definecolor{dark-purple}{RGB}{90,0,90}
+
+\definecolor{yellow}{RGB}{240,228,66}
+\definecolor{light-yellow}{RGB}{255,239,158}
+\definecolor{orange}{RGB}{230,159,0}
+\definecolor{brown}{RGB}{166,86,40}
+
+% Beamer Colors
+\setbeamercolor{structure}{fg = main-color, bg = white}
+\setbeamercolor{block title}{fg = black, bg = white}
+\setbeamercolor{block body}{fg = black, bg = white}
+
+\setbeamercolor{title in head/foot}{fg = main-color, bg = white}
+
+\setbeamercolor{titlepage headline}{fg = white, bg = white}
+\setbeamercolor{titlepage footline}{fg = white, bg = white}
+
+\setbeamercolor{frame headline}{fg = white, bg = white}
+\setbeamercolor{frame footline}{fg = main-color, bg = white}
+
+% Headline
+\defbeamertemplate*{headline}{myheadline}
+ {
+   \ifnum \insertpagenumber = 1
+     {
+     \begin{beamercolorbox}[wd = \paperwidth, ht = 5pt]{titlepage headline}%
+     \end{beamercolorbox}%
+     }
+     \else
+     {
+     \begin{beamercolorbox}[wd = \paperwidth, ht = 5pt]{frame headline}%
+     \end{beamercolorbox}%
+     }
+     \fi
+ }
+
+% Footline (with numbers)
+ \defbeamertemplate*{footline}{myfootline}
+ {
+   \ifnum \insertpagenumber = 1
+     {
+     \begin{beamercolorbox}[wd = \paperwidth, ht = 15pt]{titlepage footline}%
+     \end{beamercolorbox}%
+     }
+     \else
+     {
+     \begin{beamercolorbox}[wd = \paperwidth, ht = 15pt, right, rightskip = 5pt]{frame footline}%
+       \vbox to15pt{\vfil\hbox{\insertframenumber{}}\vfil}%
+     \end{beamercolorbox}%
+     }
+     \fi
+ }
+
+% Beamer-specific font parameters
+\usefonttheme{structurebold}
+
+% Frame title
+\setbeamerfont{frametitle}{size = \LARGE}
+\setbeamerfont{framesubtitle}{size = \normalsize}
+
+% General typography
+\usepackage{roboto}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[protrusion = true, expansion = true]{microtype}
+\usepackage{csquotes}
+\usepackage[english]{babel}
+\clubpenalty = 10000
+\widowpenalty = 10000
+
+% Spacing
+\linespread{1.25}                     % Space between lines
+\setlength{\parskip}{\bigskipamount}  % Space between paragraphs
+\setlength{\parindent}{0pt}           % Indentation
+\setlength{\leftmargini}{0.45cm}      % Left margin of items
+\setbeamertemplate{itemize/enumerate body begin}{\vspace{-2ex}}
+
+% Spacing for equations
+\AtBeginDocument{%
+ \abovedisplayskip = -15pt plus 3pt minus 3pt
+ \abovedisplayshortskip = -15pt plus 3pt minus 3pt
+ \belowdisplayskip = 5pt plus 3pt minus 3pt
+ \belowdisplayshortskip = 5pt plus 3pt minus 3pt
+}
+
+% Math
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{bbm}
+\usepackage{bm}
+\usepackage{mathtools}
+
+% Footnotes
+\usepackage[flushmargin, hang]{footmisc}
+\setlength{\footnotemargin}{0.7em}
+\setlength{\footnotesep}{1\baselineskip}
+
+% Improve exhibit captions
+\usepackage[font = footnotesize, labelfont = bf, textfont = sl, labelsep = colon, justification = centering, labelformat = empty]{caption}
+
+% Graphs
+\usepackage{graphicx}
+\usepackage{wrapfig}                  % To add lateral floats
+
+% Tables
+\usepackage{booktabs}                 % To use toprule, midrule and bottomrule
+\usepackage{longtable}                % To span multiple pages
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}          % Add notes under a longtable
+\usepackage{subcaption}
+\usepackage{makecell}
+\usepackage{float}
+\usepackage{dcolumn}
+
+% Links
+\hypersetup{colorlinks = true, citecolor = blue, urlcolor = blue, linkcolor = blue}
+
+% Highlight
+\usepackage{soul}
+\sethlcolor{light-yellow}
+
+\makeatletter
+\let\HL\hl
+\renewcommand\hl{%
+  \let\set@color\beamerorig@set@color
+  \let\reset@color\beamerorig@reset@color
+  \HL}
+\makeatother
+
+% Show overfull cases
+\overfullrule = 2cm
+
+% Appendix
+\usepackage{appendixnumberbeamer}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   tikz: call-outs, diagrams etc   %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{tikz}
+\usetikzlibrary{arrows, shapes, trees}
+\tikzset{every picture/.style = {remember picture}}
+
+%%%%%%%%%%%%%%%%%%%%
+%   New commands   %
+%%%%%%%%%%%%%%%%%%%%
+
+% Numerical constants
+\providecommand*{\eu}{\ensuremath{\mathrm{e}}} % Euler
+
+% Operators
+\providecommand*{\dnorm}{\phi} % normal density
+\providecommand*{\pnorm}{\Phi} % normal distribution function
+
+\providecommand*{\diff}{\mathop{}\!\mathrm{d}} % differential
+\providecommand*{\loglik}{\ell} % log likelihood
+
+\providecommand*{\medtimes}{\mathbin{\scalebox{1.1}{\ensuremath{\times}}}} % medtimes
+\providecommand*{\medcup}{\mathbin{\scalebox{1.5}{\ensuremath{\cup}}}} % medcup
+\providecommand*{\medcap}{\mathbin{\scalebox{1.5}{\ensuremath{\cap}}}} % medcap
+
+% Modifiers
+\providecommand*{\upperbar}[1]{\mkern 1.5mu\overline{\mkern-1.5mu#1\mkern-0.1mu}\mkern 1.5mu} % upperbar
+\providecommand*{\lowerbar}[1]{\mkern 1.5mu\underline{\mkern-1.5mu#1\mkern-0.1mu}\mkern 1.5mu} % lowerbar
+
+% Other formatting rules
+\providecommand*{\mat}[1]{\mathbf{#1}} % matrix names
+\providecommand*{\vec}[1]{\boldsymbol{#1}} % vector names 
+
+% Make hfill compatible with Beamer
+\newcommand{\myhfill}{\hskip0pt plus 1filll}
+
+%%%%%%%%%%%%%%%%%%%%
+%   End preamble   %
+%%%%%%%%%%%%%%%%%%%%
